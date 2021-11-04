@@ -11,7 +11,7 @@ import StyledLoading from './components/styles/StyledLoading';
 //lazy loading
 const Home = lazy(() => import('./pages/Home'));
 const Posts = lazy(() => import('./pages/Posts'));
-
+const Login = lazy(() => import('./pages/Login'));
 export default function App() {
   return (
     <Provider store={store}>
@@ -22,6 +22,7 @@ export default function App() {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/posts' component={Posts} />
+              <Route path='/login' component={Login} />
             </Switch>
           </Suspense>
         </ErrorBoundaries>

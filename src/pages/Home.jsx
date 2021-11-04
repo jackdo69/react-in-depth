@@ -1,6 +1,4 @@
 import React, { Suspense, useState, useContext, useEffect } from 'react';
-//context
-import { ThemeProvider, ACTIONS, DispatchContext } from '../context/theme';
 //redux
 import { useDispatch } from 'react-redux';
 import { addBook } from '../store/book';
@@ -85,39 +83,37 @@ function Home() {
   return (
     <>
       <Suspense fallback={<div>Loading...</div>}>
-        <ThemeProvider>
-          <StyledRow>
-            <div>
-              <Toggle />
-              <Clock />
-            </div>
-            <TemperatureCalculator />
-            <WordsList />
-          </StyledRow>
-          <StyledRow>
-            {showModal && (
-              <Modal>
-                <label>{addItemType}</label>
-                <StyledInput
-                  value={input}
-                  onKeyPress={(e) => handleSubmit(e)}
-                  onChange={(e) => handlerInputChange(e)}
-                  ref={addItemRef}
-                />
-                <StyledButton
-                  onClick={() => {
-                    setAddItemType('');
-                    setShowModal(false);
-                  }}
-                >
-                  Close
-                </StyledButton>
-              </Modal>
-            )}
-            <Books addItem={(e, type) => handleAddItem(e, type)} />
-            <Users addItem={(e, type) => handleAddItem(e, type)} />
-          </StyledRow>
-        </ThemeProvider>
+        <StyledRow>
+          <div>
+            <Toggle />
+            <Clock />
+          </div>
+          <TemperatureCalculator />
+          <WordsList />
+        </StyledRow>
+        <StyledRow>
+          {showModal && (
+            <Modal>
+              <label>{addItemType}</label>
+              <StyledInput
+                value={input}
+                onKeyPress={(e) => handleSubmit(e)}
+                onChange={(e) => handlerInputChange(e)}
+                ref={addItemRef}
+              />
+              <StyledButton
+                onClick={() => {
+                  setAddItemType('');
+                  setShowModal(false);
+                }}
+              >
+                Close
+              </StyledButton>
+            </Modal>
+          )}
+          <Books addItem={(e, type) => handleAddItem(e, type)} />
+          <Users addItem={(e, type) => handleAddItem(e, type)} />
+        </StyledRow>
       </Suspense>
     </>
   );
